@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陈依婷 · 个人主页</title>
+    <style>
+        /* 简洁风格，适配 GitHub Pages 默认主题 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        h1, h2, h3 {
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+        h2 {
+            font-size: 1.5em;
+        }
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            color: #0366d6;
+            font-size: 0.9em;
+        }
+        .lang-switch span {
+            margin: 0 5px;
+            text-decoration: underline;
+        }
+        .lang-switch span:hover {
+            color: #0056b3;
+        }
+        .content-section {
+            margin-bottom: 30px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        .last-updated {
+            margin-top: 50px;
+            font-size: 0.85em;
+            color: #586069;
+            text-align: right;
+            border-top: 1px solid #eaecef;
+            padding-top: 15px;
+        }
+        .en {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 语言切换按钮 -->
+    <div class="lang-switch">
+        <span onclick="switchLang('zh')">中文</span> | 
+        <span onclick="switchLang('en')">English</span>
+    </div>
+
+    <!-- 中文内容区域 -->
+    <div id="content-zh" class="zh">
+        <h1>陈依婷</h1>
+        
+        <div class="content-section">
+            <p><strong>学校：</strong>华东政法大学<br>
+            <strong>专业：</strong>司法会计（商学院）<br>
+            <strong>研究兴趣/职业方向：</strong>会计金融领域，同时关注法学相关交叉方向<br>
+            <strong>联系方式：</strong>13681688416@qq.com</p>
+        </div>
+
+        <div class="content-section">
+            <h2>个人简介</h2>
+            <p>陈依婷，华东政法大学2024届学生，就读于商学院司法会计方向。具备经济学与法学交叉学科背景，善于从复合视角分析商业与法律问题。积极严谨，乐于探索会计、金融与法律融合领域的实践应用。</p>
+        </div>
+
+        <div class="content-section">
+            <h2>技能</h2>
+            <ul>
+                <li>Python 基础、办公软件高级应用（Excel/PPT）</li>
+                <li>统计分析基础、数据处理</li>
+                <li>学术写作、文书撰写</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>教育经历 / 课程经历</h2>
+            <ul>
+                <li><strong>2024年 - 至今</strong> 华东政法大学 商学院 司法会计专业（大二转入）</li>
+                <li><strong>2021年 - 2024年</strong> 上海市崇明中学 毕业</li>
+            </ul>
+            <p><strong>已修读主要课程：</strong>高等数学、线性代数、概率论、微观经济学、宏观经济学</p>
+        </div>
+    </div>
+
+    <!-- 英文内容区域 -->
+    <div id="content-en" class="en">
+        <h1>Yiting Chen</h1>
+        
+        <div class="content-section">
+            <p><strong>University:</strong> East China University of Political Science and Law (ECUPL)<br>
+            <strong>Major:</strong> Forensic Accounting (Business School)<br>
+            <strong>Research Interests/Career Focus:</strong> Accounting & Finance, with an interest in interdisciplinary legal aspects<br>
+            <strong>Contact:</strong> 13681688416@qq.com</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Bio</h2>
+            <p>Yiting Chen, enrolled in ECUPL in 2024, majoring in Forensic Accounting within the Business School. With an interdisciplinary background in economics and law, skilled in analyzing business and legal issues from a composite perspective. Rigorous and proactive, eager to explore practical applications at the intersection of accounting, finance, and law.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Skills</h2>
+            <ul>
+                <li>Basic Python, Advanced Office Software (Excel/PPT)</li>
+                <li>Fundamental Statistical Analysis, Data Processing</li>
+                <li>Academic Writing, Document Drafting</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Education / Courses</h2>
+            <ul>
+                <li><strong>2024 - Present</strong> ECUPL, Business School, Forensic Accounting (Transferred in 2nd year)</li>
+                <li><strong>2021 - 2024</strong> Shanghai Chongming High School</li>
+            </ul>
+            <p><strong>Completed Courses:</strong> Advanced Mathematics, Linear Algebra, Probability Theory, Microeconomics, Macroeconomics</p>
+        </div>
+    </div>
+
+    <!-- 最后更新日期（自动生成） -->
+    <div class="last-updated" id="last-updated"></div>
+
+    <script>
+        // 语言切换功能
+        function switchLang(lang) {
+            document.getElementById('content-zh').style.display = lang === 'zh' ? 'block' : 'none';
+            document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
+        }
+
+        // 自动显示当前日期作为“最后更新”
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const formattedDate = `${year}-${month}-${day}`;
+        document.getElementById('last-updated').innerText = '最后更新 / Last updated: ' + formattedDate;
+    </script>
+</body>
+</html>
