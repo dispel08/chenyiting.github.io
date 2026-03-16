@@ -3,367 +3,467 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>陈依婷 · 个人主页</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <title>陈依婷 · 司法会计 · 个人主页</title>
     <style>
-        :root {
-            --primary-color: #0366d6;
-            --text-color: #24292e;
-            --secondary-text: #586069;
-            --border-color: #e1e4e8;
-            --bg-hover: #f6f8fa;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #fdf4f0 0%, #f0e9f0 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
             line-height: 1.7;
-            color: var(--text-color);
+            color: #2d3e50;
+        }
+        
+        /* 主卡片容器 */
+        .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 40px 20px;
-            background: #fff;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            padding: 40px 50px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
         }
         
-        .lang-switch {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
-            background: var(--bg-hover);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.85em;
+        /* 语言切换栏 */
+        .lang-bar {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-bottom: 30px;
         }
         
-        .lang-switch span {
+        .lang-btn {
+            background: transparent;
+            border: none;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #7a6a7c;
             cursor: pointer;
-            color: var(--primary-color);
-            padding: 0 8px;
-            transition: opacity 0.2s;
+            padding: 6px 16px;
+            border-radius: 40px;
+            transition: all 0.2s ease;
+            letter-spacing: 0.3px;
         }
         
-        .lang-switch span:hover {
-            opacity: 0.7;
+        .lang-btn.active {
+            background: linear-gradient(135deg, #c7a4b6 0%, #b592a6 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(181, 146, 166, 0.3);
         }
         
-        header {
-            text-align: center;
-            margin-bottom: 50px;
-            padding-bottom: 30px;
-            border-bottom: 2px solid var(--border-color);
+        .lang-btn:not(.active):hover {
+            background: rgba(199, 164, 182, 0.15);
+            color: #5d4e5f;
         }
         
-        h1 {
-            font-size: 2.2em;
-            margin-bottom: 10px;
-            color: var(--text-color);
-        }
-        
-        .subtitle {
-            color: var(--secondary-text);
-            font-size: 1.1em;
-            margin-top: 8px;
-        }
-        
-        section {
-            margin-bottom: 40px;
-        }
-        
-        h2 {
-            font-size: 1.4em;
-            color: var(--text-color);
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 8px;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-        
-        .contact-info {
+        /* 头部区域 - 姓名和简介卡片 */
+        .profile-header {
             display: flex;
-            justify-content: center;
-            gap: 30px;
             flex-wrap: wrap;
-            margin-top: 20px;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 2px dashed #d9c5cf;
         }
         
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: var(--primary-color);
-        }
-        
-        ul {
-            padding-left: 20px;
-        }
-        
-        li {
+        .name-title h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            background: linear-gradient(120deg, #66435a, #9b6b87);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
             margin-bottom: 8px;
-            line-height: 1.6;
+            letter-spacing: -0.5px;
         }
         
-        .timeline {
+        .badge {
+            display: inline-block;
+            background: #e5d7de;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #5e4b55;
+            box-shadow: inset 0 1px 3px rgba(255,255,255,0.7);
+        }
+        
+        /* 信息网格 */
+        .info-grid {
+            background: rgba(255, 245, 240, 0.6);
+            border-radius: 24px;
+            padding: 25px;
+            margin: 25px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            border: 1px solid #ffece1;
+        }
+        
+        .info-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .info-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #b28b9b;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #2d3e50;
+            word-break: break-word;
+        }
+        
+        .info-value a {
+            color: #9b6b87;
+            text-decoration: none;
+            border-bottom: 1px dotted #c7a4b6;
+        }
+        
+        .info-value a:hover {
+            color: #66435a;
+            border-bottom: 1px solid #66435a;
+        }
+        
+        /* 章节标题 */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 40px 0 20px 0;
             position: relative;
             padding-left: 20px;
         }
         
-        .timeline::before {
+        .section-title::before {
             content: '';
             position: absolute;
             left: 0;
             top: 8px;
             bottom: 8px;
-            width: 3px;
-            background: linear-gradient(to bottom, var(--primary-color), #e1e4e8);
-            border-radius: 2px;
+            width: 6px;
+            background: linear-gradient(135deg, #c7a4b6, #e8c1d0);
+            border-radius: 6px;
         }
         
-        .timeline-item {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .timeline-item::before {
+        .section-title::after {
             content: '';
-            position: absolute;
-            left: -23px;
-            top: 6px;
-            width: 10px;
-            height: 10px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            border: 2px solid #fff;
-            box-shadow: 0 0 0 2px var(--primary-color);
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #d9afc0, transparent);
+            margin-top: 8px;
+            border-radius: 3px;
         }
         
-        .timeline-date {
-            font-weight: 600;
-            color: var(--text-color);
+        /* 简介段落 */
+        .bio {
+            font-size: 1.15rem;
+            color: #3f4e5f;
+            padding: 0 10px;
+            font-style: italic;
+            border-left: 3px solid #e3c9d4;
+            padding-left: 25px;
+            margin: 20px 0 30px 0;
         }
         
-        .timeline-content {
-            color: var(--secondary-text);
-        }
-        
-        .skill-tags {
+        /* 技能标签 */
+        .skills-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 12px;
+            margin: 20px 0;
         }
         
         .skill-tag {
-            background: var(--bg-hover);
-padding: 6px 14px;
-border-radius: 16px;
-font-size: 0.9em;
-border: 1px solid var(--border-color);
-transition: all 0.2s;
-}
-    .skill-tag:hover {
-        border-color: var(--primary-color);
-        color: var(--primary-color);
-    }
-    
-    .course-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 15px;
-    }
-    
-    .course-table th,
-    .course-table td {
-        padding: 10px 15px;
-        text-align: left;
-        border-bottom: 1px solid var(--border-color);
-    }
-    
-    .course-table th {
-        background: var(--bg-hover);
-        font-weight: 600;
-        color: var(--text-color);
-    }
-    
-    .course-table tr:hover {
-        background: var(--bg-hover);
-    }
-    
-    .award-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 12px;
-        padding: 12px 0;
-        border-bottom: 1px solid var(--border-color);
-    }
-    
-    .award-item:last-child {
-        border-bottom: none;
-    }
-    
-    .award-icon {
-        font-size: 1.2em;
-    }
-    
-    .award-info {
-        flex: 1;
-    }
-    
-    .award-title {
-        font-weight: 600;
-        color: var(--text-color);
-    }
-    
-    .award-desc {
-        color: var(--secondary-text);
-        font-size: 0.9em;
-        margin-top: 2px;
-    }
-    
-    footer {
-        margin-top: 60px;
-        padding-top: 30px;
-        border-top: 1px solid var(--border-color);
-        text-align: center;
-        color: var(--secondary-text);
-        font-size: 0.85em;
-    }
-    
-    .en {
-        display: none;
-    }
-    
-    @media (max-width: 600px) {
-        body {
-            padding: 20px 15px;
+            background: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #5e4b55;
+            box-shadow: 0 4px 10px rgba(199, 164, 182, 0.15);
+            border: 1px solid #f0dde5;
+            transition: all 0.2s ease;
         }
         
-        h1 {
-            font-size: 1.8em;
+        .skill-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(181, 146, 166, 0.25);
+            border-color: #c7a4b6;
+            background: #fcf4f8;
         }
         
-        .contact-info {
-            flex-direction: column;
+        /* 教育经历卡片 */
+        .education-item {
+            background: white;
+            border-radius: 20px;
+            padding: 20px 25px;
+            margin-bottom: 15px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.03);
+            border: 1px solid #f5e2ea;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .education-item:hover {
+            border-color: #d9afc0;
+            box-shadow: 0 12px 24px -8px rgba(157, 115, 135, 0.2);
+        }
+        
+        .edu-year {
+            min-width: 130px;
+            font-weight: 600;
+            color: #9b6b87;
+            font-size: 1.1rem;
+        }
+        
+        .edu-desc {
+            flex: 1;
+            color: #2d3e50;
+        }
+        
+        .course-list {
+            background: #faf1f5;
+            border-radius: 18px;
+            padding: 20px 25px;
+            margin: 15px 0 0 0;
+            font-size: 0.95rem;
+            border: 1px solid #eed9e3;
+        }
+        
+        .course-list strong {
+            color: #9b6b87;
+            font-weight: 600;
+        }
+        
+        /* 英文内容调整 */
+        .en {
+            display: none;
+        }
+        
+        /* 页脚 */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            text-align: right;
+            font-size: 0.9rem;
+            color: #8b7a85;
+            border-top: 2px dashed #d9c5cf;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 10px;
         }
         
-        .course-table {
-            font-size: 0.9em;
+        .footer-left {
+            color: #c2a5b4;
+            font-size: 0.85rem;
         }
-    }
-</style>
+        
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px 20px;
+            }
+            .profile-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .name-title h1 {
+                font-size: 2.5rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-
-<div class="lang-switch">
-    <span onclick="switchLang('zh')">中文</span> | 
-    <span onclick="switchLang('en')">English</span>
-</div>
-
-<div id="content-zh">
-    <header>
-        <h1>陈依婷</h1>
-        <p class="subtitle">华东政法大学 · 司法会计</p>
-        <div class="contact-info">
-            <span class="contact-item">📧 13681688416@qq.com</span>
+    <div class="container">
+        <!-- 语言切换栏 -->
+        <div class="lang-bar">
+            <button class="lang-btn active" onclick="switchLang('zh')" id="btn-zh">中文</button>
+            <button class="lang-btn" onclick="switchLang('en')" id="btn-en">English</button>
         </div>
-    </header>
 
-    <section>
-        <h2>个人简介</h2>
-        <p>华东政法大学商学院司法会计专业学生，大二转入。具备经济学与法学交叉学科背景，善于从复合视角分析商业与法律问题。积极严谨，致力于探索会计、金融与法律融合领域的实践应用。</p>
-    </section>
-
-    <section>
-        <h2>教育经历</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-date">2024 — 至今</div>
-                <div class="timeline-content">
-                    <strong>华东政法大学</strong> 商学院 司法会计专业<br>
-                    <span style="color: var(--secondary-text);">大二转入 · 2024届</span>
+        <!-- 中文内容 -->
+        <div id="content-zh" class="zh">
+            <!-- 头部 -->
+            <div class="profile-header">
+                <div class="name-title">
+                    <h1>陈依婷</h1>
+                    <span class="badge">华东政法大学 · 司法会计</span>
                 </div>
             </div>
-            <div class="timeline-item">
-                <div class="timeline-date">2021 — 2024</div>
-                <div class="timeline-content">
-                    <strong>上海市崇明中学</strong><br>
-                    <span style="color: var(--secondary-text);">毕业</span>
+            
+            <!-- 基本信息卡片 -->
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">学校</span>
+                    <span class="info-value">华东政法大学</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">专业</span>
+                    <span class="info-value">司法会计（商学院）</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">研究兴趣/职业方向</span>
+                    <span class="info-value">会计金融领域 · 法学交叉方向</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">联系方式</span>
+                    <span class="info-value"><a href="mailto:13681688416@qq.com">13681688416@qq.com</a></span>
                 </div>
             </div>
+            
+            <!-- 个人简介 -->
+            <h2 class="section-title">个人简介</h2>
+            <div class="bio">
+                陈依婷，华东政法大学2024届学生，就读于商学院司法会计方向。具备经济学与法学交叉学科背景，善于从复合视角分析商业与法律问题。积极严谨，乐于探索会计、金融与法律融合领域的实践应用。
+            </div>
+            
+            <!-- 技能 -->
+            <h2 class="section-title">技能</h2>
+            <div class="skills-container">
+                <span class="skill-tag">Python 基础</span>
+                <span class="skill-tag">办公软件高级应用</span>
+                <span class="skill-tag">统计分析基础</span>
+                <span class="skill-tag">数据处理</span>
+                <span class="skill-tag">学术写作</span>
+                <span class="skill-tag">文书撰写</span>
+            </div>
+            
+            <!-- 教育经历 -->
+            <h2 class="section-title">教育经历</h2>
+            <div class="education-item">
+                <div class="edu-year">2024年 - 至今</div>
+                <div class="edu-desc"><strong>华东政法大学 商学院</strong> · 司法会计专业（大二转入）</div>
+            </div>
+            <div class="education-item">
+                <div class="edu-year">2021年 - 2024年</div>
+                <div class="edu-desc"><strong>上海市崇明中学</strong> · 毕业</div>
+            </div>
+            
+            <!-- 课程经历 -->
+            <h2 class="section-title">课程经历</h2>
+            <div class="course-list">
+                <strong>已修读主要课程：</strong> 高等数学、线性代数、概率论、微观经济学、宏观经济学
+            </div>
         </div>
-    </section>
-
-    <section>
-        <h2>荣誉奖项</h2>
-        <div class="award-item">
-            <span class="award-icon">🏆</span>
-            <div class="award-info">
-
-<div class="award-title">校级综合三等奖学金</div>
-<div class="award-desc">华东政法大学 · 2024-2025学年</div>
-</div>
-</div>
-</section>
-
-    <section>
-        <h2>Courses</h2>
-        <table class="course-table">
-            <tr>
-                <th>Course</th>
-                <th>Type</th>
-            </tr>
-            <tr>
-                <td>Advanced Mathematics</td>
-                <td>Foundation</td>
-            </tr>
-            <tr>
-                <td>Linear Algebra</td>
-                <td>Foundation</td>
-            </tr>
-            <tr>
-                <td>Probability Theory</td>
-                <td>Foundation</td>
-            </tr>
-            <tr>
-                <td>Microeconomics</td>
-                <td>Core</td>
-            </tr>
-            <tr>
-                <td>Macroeconomics</td>
-                <td>Core</td>
-            </tr>
-        </table>
-    </section>
-
-    <section>
-        <h2>Research Interests</h2>
-        <div class="skill-tags">
-            <span class="skill-tag">Accounting</span>
-            <span class="skill-tag">Financial Management</span>
-            <span class="skill-tag">Auditing</span>
-            <span class="skill-tag">Tax Law</span>
-            <span class="skill-tag">Forensic Accounting</span>
+        
+        <!-- 英文内容 -->
+        <div id="content-en" class="en">
+            <!-- 头部 -->
+            <div class="profile-header">
+                <div class="name-title">
+                    <h1>Yiting Chen</h1>
+                    <span class="badge">ECUPL · Forensic Accounting</span>
+                </div>
+            </div>
+            
+            <!-- 基本信息卡片 (英文) -->
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">University</span>
+                    <span class="info-value">East China University of Political Science and Law</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Major</span>
+                    <span class="info-value">Forensic Accounting (Business School)</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Interests/Career</span>
+                    <span class="info-value">Accounting & Finance · Legal Intersections</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Contact</span>
+                    <span class="info-value"><a href="mailto:13681688416@qq.com">13681688416@qq.com</a></span>
+                </div>
+            </div>
+            
+            <!-- Bio -->
+            <h2 class="section-title">Bio</h2>
+            <div class="bio">
+                Yiting Chen, enrolled in ECUPL in 2024, majoring in Forensic Accounting within the Business School. With an interdisciplinary background in economics and law, skilled in analyzing business and legal issues from a composite perspective. Rigorous and proactive, eager to explore practical applications at the intersection of accounting, finance, and law.
+            </div>
+            
+            <!-- Skills -->
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-container">
+                <span class="skill-tag">Basic Python</span>
+                <span class="skill-tag">Advanced Office</span>
+                <span class="skill-tag">Statistical Analysis</span>
+                <span class="skill-tag">Data Processing</span>
+                <span class="skill-tag">Academic Writing</span>
+                <span class="skill-tag">Document Drafting</span>
+            </div>
+            
+            <!-- Education -->
+            <h2 class="section-title">Education</h2>
+            <div class="education-item">
+                <div class="edu-year">2024 - Present</div>
+                <div class="edu-desc"><strong>ECUPL, Business School</strong> · Forensic Accounting (Transferred in 2nd year)</div>
+            </div>
+            <div class="education-item">
+                <div class="edu-year">2021 - 2024</div>
+                <div class="edu-desc"><strong>Shanghai Chongming High School</strong> · Graduate</div>
+            </div>
+            
+            <!-- Courses -->
+            <h2 class="section-title">Courses</h2>
+            <div class="course-list">
+                <strong>Completed Courses:</strong> Advanced Mathematics, Linear Algebra, Probability Theory, Microeconomics, Macroeconomics
+            </div>
         </div>
-    </section>
-</div>
-
-<footer>
-    <p>最后更新 / Last updated: <span id="last-updated"></span></p>
-</footer>
-
-<script>
-    function switchLang(lang) {
-        document.getElementById('content-zh').style.display = lang === 'zh' ? 'block' : 'none';
-        document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
-    }
-
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    const day = String(now.getDate()).padStart(2, '0');
-    document.getElementById('last-updated').innerText = `${year}-${month}-${day}`;
-</script>
+        
+        <!-- 页脚 -->
+        <div class="footer">
+            <div class="footer-left">⚖️ 司法会计 · 交叉学科视角</div>
+            <div class="last-updated" id="last-updated"></div>
+        </div>
+    </div>
+    
+    <script>
+        // 语言切换功能
+        function switchLang(lang) {
+            document.getElementById('content-zh').style.display = lang === 'zh' ? 'block' : 'none';
+            document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
+            
+            // 更新按钮状态
+            document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        }
+        
+        // 自动更新最后修改日期
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const formattedDate = `${year}.${month}.${day}`;
+        document.getElementById('last-updated').innerText = '最后更新 / Last updated: ' + formattedDate;
+        
+        // 初始化：确保中文显示
+        switchLang('zh');
+    </script>
 </body>
 </html>
