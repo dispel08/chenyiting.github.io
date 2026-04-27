@@ -1,113 +1,494 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>会计学文献综述</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会计学文献综述｜陈依婷</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 20px;
-            line-height: 1.6;
-            background: #f0f2f5;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #f0f2f5 0%, #e0e5ec 100%);
+            color: #1a2a3a;
+            line-height: 1.8;
+            padding: 40px 20px;
         }
-        .box {
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
             background: white;
+            border-radius: 28px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            padding: 50px 60px;
+        }
+        
+        @media (max-width: 700px) {
+            .container {
+                padding: 30px 25px;
+            }
+        }
+        
+        /* 头部 */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #4a90e2;
+        }
+        
+        h1 {
+            font-size: 2.2em;
+            color: #1a1a2e;
+            margin-bottom: 15px;
+        }
+        
+        .subtitle {
+            color: #5a6e7c;
+            font-size: 1em;
+        }
+        
+        .author-info {
+            margin-top: 15px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        
+        /* 章节标题 */
+        h2 {
+            font-size: 1.6em;
+            color: #16213e;
+            margin: 45px 0 20px 0;
+            padding-left: 15px;
+            border-left: 5px solid #4a90e2;
+        }
+        
+        h3 {
+            font-size: 1.3em;
+            color: #0f3460;
+            margin: 30px 0 15px 0;
+        }
+        
+        h4 {
+            font-size: 1.1em;
+            color: #e94560;
+            margin: 20px 0 10px 0;
+        }
+        
+        /* 概念解释框 */
+        .concept-box {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-left: 4px solid #667eea;
+            padding: 20px 25px;
+            border-radius: 16px;
+            margin: 25px 0;
+        }
+        
+        .concept-box h3 {
+            margin-top: 0;
+            color: #4a55a2;
+        }
+        
+        /* 论文卡片 */
+        .paper-card {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .paper-card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transform: translateY(-3px);
+            border-color: #4a90e2;
+        }
+        
+        .paper-title {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+        
+        .paper-meta {
+            color: #64748b;
+            font-size: 0.85em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #cbd5e1;
+        }
+        
+        .paper-question {
+            background: #eef2ff;
+            padding: 10px 15px;
             border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 12px 0;
+            font-weight: 500;
         }
-        h1 { color: #333; border-left: 4px solid #4a90e2; padding-left: 15px; }
-        h2 { color: #555; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-top: 30px; }
-        .paper {
-            background: #f9f9f9;
-            padding: 15px;
-            margin: 15px 0;
-            border-left: 3px solid #4a90e2;
+        
+        /* 对比表格 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #f8fafc;
+            border-radius: 16px;
+            overflow: hidden;
         }
-        .title { font-weight: bold; font-size: 1.1em; }
-        .meta { color: #888; font-size: 0.85em; margin: 5px 0; }
-        .ref {
-            background: #333;
+        
+        .comparison-table th {
+            background: #1e293b;
             color: white;
-            padding: 15px;
-            margin-top: 30px;
-            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            font-weight: 600;
         }
-        a { color: #4a90e2; }
+        
+        .comparison-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            text-align: center;
+        }
+        
+        .comparison-table tr:hover {
+            background: #f1f5f9;
+        }
+        
+        /* 共识发现 */
+        .insight-box {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+        }
+        
+        .insight-box h3 {
+            color: #94a3b8;
+            border-bottom-color: #334155;
+        }
+        
+        .insight-box ul li {
+            margin: 12px 0;
+        }
+        
+        /* 参考文献 */
+        .reference {
+            background: #1e293b;
+            color: #cbd5e1;
+            padding: 25px 30px;
+            border-radius: 20px;
+            margin-top: 40px;
+            font-size: 0.85em;
+        }
+        
+        .reference h3 {
+            color: white;
+            margin-top: 0;
+        }
+        
+        .reference p {
+            margin: 8px 0;
+            font-family: monospace;
+        }
+        
+        /* 返回链接 */
+        .back-link {
+            display: inline-block;
+            margin-top: 35px;
+            color: #4a90e2;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 20px;
+            background: #eef2ff;
+            border-radius: 40px;
+            transition: 0.2s;
+        }
+        
+        .back-link:hover {
+            background: #4a90e2;
+            color: white;
+            text-decoration: none;
+        }
+        
+        hr {
+            margin: 30px 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, #e2e8f0, transparent);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #4a90e2;
+            color: white;
+            font-size: 0.7em;
+            padding: 3px 12px;
+            border-radius: 20px;
+            margin-left: 12px;
+            vertical-align: middle;
+        }
+        
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        strong {
+            color: #e94560;
+        }
+        
+        .summary-box {
+            background: #ecfdf5;
+            border-left: 4px solid #10b981;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body>
-<div class="box">
-    <h1>📚 会计学文献综述（2004-2005）</h1>
-    
-    <h2>一、研究背景</h2>
-    <p>20世纪90年代以来，随着我国经济体制转型，资本市场逐步建立，会计信息的使用者从政府管理部门扩展为投资者、债权人等多元主体。2000年前后，我国颁布了《企业会计制度》和多项具体会计准则，但会计信息失真、财务舞弊事件频发，引发了学界对会计信息质量、会计准则实施效果等问题的深入反思。</p>
-    
-    <h2>二、各论文核心观点</h2>
-    
-    <div class="paper">
-        <div class="title">（一）无形资产会计核算研究</div>
-        <div class="meta">姜立坤 | 上海海事大学 | 2004</div>
-        <p>接受投资取得的无形资产应按公允价值入账；自行开发无形资产应将开发费用有条件资本化；技术类无形资产应采用加速摊销法；自创商誉应确认入账，商誉不应摊销而应定期评估减值。</p>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <h1>📚 我国会计领域核心问题研究 <span class="badge">文献综述</span></h1>
+            <div class="subtitle">基于2004-2005年7篇会计学硕士学位论文的系统梳理与分析</div>
+            <div class="author-info">综述作者：陈依婷 | 华东政法大学 司法会计专业 | 完成时间：2026年4月</div>
+        </div>
+
+        <!-- ===== 什么是文献综述 ===== -->
+        <div class="concept-box">
+            <h3>📖 什么是文献综述？</h3>
+            <p><strong>文献综述</strong>是学术研究的基础性工作，指在全面检索、阅读某一领域相关文献的基础上，经过整理、分析、归纳和评价，系统阐述该领域的研究现状、主要观点、争议焦点、存在问题及未来发展趋势的学术文体。</p>
+            <p style="margin-top: 12px;"><strong>文献综述的四大功能：</strong></p>
+            <ul>
+                <li><strong>梳理现状</strong>：了解该领域“已经研究了什么”</li>
+                <li><strong>识别空白</strong>：发现该领域“还有什么没研究”</li>
+                <li><strong>避免重复</strong>：站在前人肩膀上开展新的研究</li>
+                <li><strong>指引方向</strong>：为该领域的后续研究提供参考</li>
+            </ul>
+            <p style="margin-top: 12px; color: #4a55a2;">本次综述聚焦2004-2005年我国会计学领域的7篇硕士学位论文，涵盖无形资产核算、会计准则与信息质量、审计与公司治理、所得税会计、会计信息披露、会计职业判断、司法会计鉴定等七个研究方向，旨在系统呈现这一时期我国会计研究的核心问题与主要观点。</p>
+        </div>
+
+        <!-- ===== 一、研究背景 ===== -->
+        <h2>一、研究背景与问题提出</h2>
+        <p>20世纪90年代以来，我国经历了一场深刻的经济体制变革。随着现代企业制度和资本市场的建立，企业所有权与经营权逐步分离，会计信息的使用者从单一的政府管理部门，扩展为投资者、债权人、社会公众等多元主体。这一变化对会计信息的质量提出了前所未有的高要求。</p>
+        <p>2000年前后，我国相继颁布了《企业会计制度》和多项具体会计准则，会计标准体系逐步与国际接轨。然而，会计信息失真、财务舞弊事件频发（如琼民源、银广夏、郑百文等案例），引发了学术界对会计信息质量、会计准则实施效果、公司治理机制等问题的深入反思。</p>
+        <p>在这一背景下，2004-2005年间涌现出一批高质量的会计学硕士学位论文，从不同维度对我国会计领域面临的核心问题进行了系统研究。本次综述选取其中7篇具有代表性的论文，按照"问题提出→理论分析→实证检验→对策建议"的逻辑框架进行梳理。</p>
+
+        <!-- ===== 二、各论文详细综述 ===== -->
+        <h2>二、各论文核心观点综述</h2>
+
+        <!-- 论文1 -->
+        <div class="paper-card">
+            <div class="paper-title">📄 论文一：对我国无形资产会计核算规范的研究</div>
+            <div class="paper-meta">姜立坤 | 上海海事大学 | 2004年 | 关键词：无形资产、确认、计量、商誉</div>
+            <div class="paper-question">🔍 研究问题：我国会计准则中无形资产核算范围狭窄、摊销方法简单、自创商誉未确认等问题如何解决？</div>
+            <p><strong>📌 研究背景</strong>：随着知识经济的发展，无形资产在企业中的地位越来越重要，但我国会计法规对无形资产的核算存在诸多不足。</p>
+            <p><strong>📌 理论分析</strong>：从财务会计概念框架出发，分析无形资产的本质特征——无形性、多样性、不确定性。</p>
+            <p><strong>📌 核心发现</strong>：</p>
+            <ul>
+                <li><strong>初始计量</strong>：接受投资取得的无形资产应按公允价值入账，而非投资方账面价值；自行开发无形资产应将开发费用有条件资本化，而非全部费用化。</li>
+                <li><strong>摊销方法</strong>：技术类无形资产应采用加速摊销法（如双倍余额递减法），商标等可延期无形资产应将后续有效年限计入摊销期。</li>
+                <li><strong>减值处理</strong>：前期确认的减值损失不应转回，以防止企业操纵利润。</li>
+                <li><strong>商誉确认</strong>：自创商誉应予以确认入账，外购商誉应作为自创商誉的增加值核算；商誉不应摊销，而应定期评估减值。</li>
+            </ul>
+            <p><strong>📌 研究方法</strong>：规范研究为主，比较分析国际会计准则与我国准则差异。</p>
+            <p><strong>📌 学术贡献</strong>：系统构建了无形资产从初始计量到期末减值的完整核算框架，为后续会计制度改革提供了理论依据。</p>
+        </div>
+
+        <!-- 论文2 -->
+        <div class="paper-card">
+            <div class="paper-title">📄 论文二：企业会计准则与会计信息质量的关系研究</div>
+            <div class="paper-meta">郭志明 | 重庆大学 | 2004年 | 关键词：会计准则、会计信息质量、经济后果、价值相关性</div>
+            <div class="paper-question">🔍 研究问题：会计准则的实施是否必然提高会计信息质量？</div>
+            <p><strong>📌 研究背景</strong>：我国陆续颁布多项具体会计准则，但会计信息失真问题仍然严重，引发对会计准则有效性的质疑。</p>
+            <p><strong>📌 理论分析</strong>：引入"经济后果"学说，认为会计信息是整个制度环境的产物，仅依靠会计准则无法保证高质量会计信息。</p>
+            <p><strong>📌 实证检验</strong>：</p>
+            <ul>
+                <li>以《企业会计准则——中期财务报告》为例，运用报酬模型和价格模型检验发现：新准则实施后净资产信息的价值相关性提高，但会计盈余信息的价值相关性反而下降。</li>
+                <li>1996-2002年综合数据表明，会计准则与会计信息质量之间缺乏稳定的内在联系。</li>
+            </ul>
+            <p><strong>📌 根本原因</strong>：会计信息提供方面临的法律责任与法律风险未发生实质性变化；准则制定缺乏博弈过程；准则执行偏离目标。</p>
+            <p><strong>📌 研究方法</strong>：规范研究 + 实证研究（多元回归、报酬模型、价格模型）。</p>
+            <p><strong>📌 学术贡献</strong>：最早对我国会计准则实施效果进行大样本实证检验，揭示出"好准则≠好信息"的深刻洞见。</p>
+        </div>
+
+        <!-- 论文3 -->
+        <div class="paper-card">
+            <div class="paper-title">📄 论文三：审计、会计质量与公司治理研究</div>
+            <div class="paper-meta">吴曰想 | 西南财经大学 | 2005年 | 关键词：审计质量、会计质量、公司治理、外部治理</div>
+            <div class="paper-question">🔍 研究问题：会计质量、审计质量与公司治理之间存在怎样的内在关系？</div>
+            <p><strong>📌 理论框架</strong>：提出"三层次框架"——第一层次（内部治理监控会计质量）→ 第二层次（外部审计鉴证会计质量）→ 第三层次（外部治理直接监管审计），核心在第三层次。</p>
+            <p><strong>📌 核心观点</strong>：</p>
+            <ul>
+                <li><strong>系统观</strong>：会计质量是目标，审计质量是手段，二者不可分割。</li>
+                <li><strong>监管思路</strong>：监管当局不应直接监管会计质量，而应强化外部治理、直接监管审计。</li>
+                <li><strong>审计独立性</strong>：审计"商品化"损害独立性；地域性影响审计质量；债权人治理机制缺失。</li>
+            </ul>
+            <p><strong>📌 研究方法</strong>：规范研究为主，辅以描述性统计。</p>
+            <p><strong>📌 政策建议</strong>：重构审计委托关系，推行财务报表保险制度，建立审计委员会制度。</p>
+        </div>
+
+        <!-- 论文4 -->
+        <div class="paper-card">
+            <div class="paper-title">📄 论文四：所得税会计方法选择的理论分析和实证研究</div>
+            <div class="paper-meta">饶茜 | 重庆大学 | 2004年 | 关键词：所得税会计、会计政策选择、契约理论、收益平滑</div>
+            <div class="paper-question">🔍 研究问题：企业为什么选择纳税影响会计法？其契约动因是什么？</div>
+            <p><strong>📌 理论基础</strong>：运用Watts和Zimmerman的实证会计理论三大假设——分红计划假说、负债权益比率假说、政治成本假说。</p>
+            <p><strong>📌 方法比较</strong>：纳税影响会计法能起到收益平滑作用，是应付税款法的替代选择。</p>
+            <p><strong>📌 实证结果</strong>：</p>
+            <ul>
+                <li>选择纳税影响会计法的企业主要受政治成本、收益波动幅度和簿记成本影响。</li>
+                <li>西方三大假设仅政治成本假设通过检验，报酬契约和债务契约不显著。</li>
+                <li>2002年A股上市公司中仅27家采用纳税影响会计法，比例极低。</li>
+            </ul>
+            <p><strong>📌 研究方法</strong>：规范研究 + 实证研究（Logistic回归、配对样本分析）。</p>
+            <p><strong>📌 学术贡献</strong>：首次对中国上市公司所得税会计政策选择的契约动因进行系统实证检验。</p>
+        </div>
+
+        <!-- 论文5 -->
+        <div class="paper-card">
+            <div class="paper-title">📄 论文五：我国上市公司会计信息披露问题研究</div>
+            <div class="paper-meta">刘秋红 | 山东科技大学 | 2004年 | 关键词：上市公司、会计信息披露、法制规范、监管</div>
+            <div class="paper-question">🔍 研究问题：我国上市公司会计信息披露存在哪些问题？成因是什么？如何解决？</div>
+            <p><strong>📌 现状分析</strong>：以黎明股份等典型案例为切入点，揭示会计信息披露的严重失真问题。</p>
+            <p><strong>📌 存在问题</strong>：披露不真实（虚假、误导）、不恰当（过量或不足）、不及时、不规范。</p>
+            <p><strong>📌 深层成因</strong>：巨大利益驱动、违规成本低廉、法规政出多门、披露真实信息成本过高。</p>
+            <p><strong>📌 对策建议</strong>：完善公司治理结构；建立信息披露监督规范体系；加强中介机构监管；严格执法加大处罚力度；推行保荐制度。</p>
+            <p><strong>📌 研究方法</strong>：规范研究 + 案例分析。</p>
+            <p><strong>📌 政策影响</strong>：为证监会后续出台多项信息披露准则提供了学术支持。</p>
+        </div>
+
+        <!-- 论文6 -->
+        <div class="paper-card">
+            <div class="paper-title">📄 论文六：论会计职业判断</div>
+            <div class="paper-meta">孙丹 | 中国海洋大学 | 2004年 | 关键词：会计职业判断、会计原则、会计标准、会计准则模式</div>
+            <div class="paper-question">🔍 研究问题：会计职业判断的基本理论是什么？我国运用现状如何？</div>
+            <p><strong>📌 发展轨迹</strong>：会计职业判断经历了从自由放任→尽量遏制→正视并鼓励的过程，与会计准则模式从规则基础向原则基础的转变相关。</p>
+            <p><strong>📌 理论框架</strong>：系统提出会计职业判断的假设（会计标准合理、判断主体具备素质）、本质（专业技术决策）、目标（决策有用性）、原则（合规、合理、公允、独立、客观、谨慎）、程序（语义判断→寻找依据→确定目标→实质性判断→复核→披露）。</p>
+            <p><strong>📌 实证分析</strong>：以2002年深交所450家上市公司计提八项资产减值准备为样本，发现微利企业普遍减少减值准备（61.11%）、重亏企业普遍增加减值准备（85.71%），存在滥用职业判断进行盈余操纵的现象。</p>
+            <p><strong>📌 对策</strong>：建立会计职业判断导引体系（权威性导引+非权威性导引）；提高会计人员业务能力和职业道德。</p>
+            <p><strong>📌 学术贡献</strong>：首次系统构建会计职业判断的理论框架，填补了国内该领域理论研究的空白。</p>
+        </div>
+
+        <!-- 论文7 -->
+        <div class="paper-card">
+            <div class="paper-title">📄 论文七：司法会计鉴定制度研究</div>
+            <div class="paper-meta">邱宁波 | 华东政法学院 | 2004年 | 关键词：司法会计鉴定、鉴定制度、质证、启动权</div>
+            <div class="paper-question">🔍 研究问题：如何构建科学规范的司法会计鉴定制度？</div>
+            <p><strong>📌 科学基础</strong>：财务会计特性（资产运动规律性、会计核算特定性、财务关系稳定性）是司法会计鉴定的科学依据；会计学原理和方法是其客观基础。</p>
+            <p><strong>📌 制度现状</strong>：鉴定机构设置"多元化"（公、检、法、司各自为政）、管理混乱、启动机制不合理、质证制度空白。</p>
+            <p><strong>📌 改革建议</strong>：</p>
+            <ul>
+                <li>鉴定机构独立于公检法，由司法行政机关统一管理</li>
+                <li>实行全国统一的司法会计鉴定人资格考试</li>
+                <li>分阶段设置鉴定启动权（侦查阶段由侦查机关决定；庭审阶段由法院决定）</li>
+                <li>建立鉴定结论展示、鉴定人出庭、交叉询问等质证制度</li>
+            </ul>
+            <p><strong>📌 研究方法</strong>：规范研究 + 比较法研究（英美法系与大陆法系比较）。</p>
+            <p><strong>📌 学术贡献</strong>：作为法学与会计学的交叉研究成果，为我国司法会计鉴定制度的规范化提供了理论框架。</p>
+        </div>
+
+        <!-- ===== 三、横向比较 ===== -->
+        <h2>三、七篇论文的横向比较</h2>
+        
+        <table class="comparison-table">
+            <thead>
+                <tr><th>论文</th><th>研究主题</th><th>研究方法</th><th>核心贡献</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>姜立坤</td><td>无形资产核算</td><td>规范研究</td><td>无形资产核算框架</td></tr>
+                <tr><td>郭志明</td><td>会计准则与信息质量</td><td>规范+实证</td><td>准则效果实证检验</td></tr>
+                <tr><td>吴曰想</td><td>审计、会计与公司治理</td><td>规范研究</td><td>三层次治理框架</td></tr>
+                <tr><td>饶茜</td><td>所得税会计政策选择</td><td>规范+实证</td><td>政策选择动因检验</td></tr>
+                <tr><td>刘秋红</td><td>会计信息披露</td><td>规范+案例</td><td>信息披露问题诊断</td></tr>
+                <tr><td>孙丹</td><td>会计职业判断</td><td>规范+统计</td><td>职业判断理论框架</td></tr>
+                <tr><td>邱宁波</td><td>司法会计鉴定</td><td>规范+比较</td><td>司法鉴定制度设计</td></tr>
+            </tbody>
+        </table>
+
+        <!-- ===== 四、共识性发现 ===== -->
+        <div class="insight-box">
+            <h3>💡 七篇论文的共识性发现</h3>
+            <ul>
+                <li><strong>会计准则不是万能药</strong>：郭志明、吴曰想均指出，高质量的会计准则并不必然带来高质量的会计信息，需要健全的法律环境和公司治理机制作为支撑。</li>
+                <li><strong>公司治理是根源</strong>：吴曰想、孙丹、刘秋红都认为，会计信息质量问题的根源在公司治理结构，而非单纯的技术问题。</li>
+                <li><strong>职业判断不可替代</strong>：孙丹、姜立坤均强调，无论会计准则如何完善，会计职业判断都是不可或缺的，关键在于引导而非消除。</li>
+                <li><strong>制度环境至关重要</strong>：郭志明的"经济后果"分析、吴曰想的"三层次"框架、饶茜的契约理论分析，共同指向制度环境对会计行为的决定性影响。</li>
+                <li><strong>实证研究成为主流</strong>：郭志明、饶茜、孙丹均运用大样本数据和统计模型，标志着我国会计研究从规范分析向实证研究转型。</li>
+            </ul>
+        </div>
+
+        <!-- ===== 五、研究空白与未来方向 ===== -->
+        <h2>四、研究空白与未来方向</h2>
+        <div class="summary-box">
+            <p><strong>📌 现有研究的不足：</strong></p>
+            <ul>
+                <li><strong>实证研究深度不足</strong>：除郭志明、饶茜外，其余论文以规范研究为主，缺乏大样本实证检验。</li>
+                <li><strong>跨期比较研究缺乏</strong>：各论文仅考察了2002-2004年的横截面数据，缺乏时间序列分析。</li>
+                <li><strong>行为会计研究空白</strong>：孙丹虽提及会计人员心理因素，但未深入探讨行为会计学视角。</li>
+                <li><strong>国际比较研究不足</strong>：除邱宁波有比较法分析外，其余论文对国际经验的借鉴不够充分。</li>
+                <li><strong>会计与法律交叉研究薄弱</strong>：司法会计鉴定领域的研究尚处于起步阶段。</li>
+            </ul>
+        </div>
+        
+        <div class="summary-box">
+            <p><strong>🚀 未来研究方向：</strong></p>
+            <ul>
+                <li><strong>实证研究的深化</strong>：运用更先进的计量方法（如DID、PSM等）检验政策效果。</li>
+                <li><strong>大数据与人工智能在会计中的应用</strong>：新技术如何改变会计职业判断和审计监督。</li>
+                <li><strong>ESG信息披露研究</strong>：环境、社会、治理信息已成为投资者关注的新焦点。</li>
+                <li><strong>数字经济时代的会计问题</strong>：虚拟资产、数字货币、平台经济的会计确认与计量。</li>
+                <li><strong>司法会计鉴定与证据规则</strong>：会计证据在诉讼中的采信标准研究。</li>
+            </ul>
+        </div>
+
+        <!-- ===== 六、对会计实务的启示 ===== -->
+        <h2>五、对会计实务的启示</h2>
+        <ul>
+            <li><strong>企业层面</strong>：应建立健全内部控制制度，避免滥用会计职业判断进行盈余操纵。</li>
+            <li><strong>监管层面</strong>：应强化外部治理机制，加大对财务造假的处罚力度，完善民事赔偿制度。</li>
+            <li><strong>准则层面</strong>：会计准则应坚持原则导向，既给予职业判断空间，又提供充分的实务指南。</li>
+            <li><strong>教育层面</strong>：会计教育应从注重技术训练转向培养职业判断能力和职业道德素养。</li>
+            <li><strong>司法层面</strong>：应建立统一的司法会计鉴定人资格制度和质证规则，确保鉴定结论的科学性。</li>
+        </ul>
+
+        <!-- ===== 七、参考文献 ===== -->
+        <div class="reference">
+            <h3>📖 参考文献</h3>
+            <p>[1] 姜立坤. 对我国无形资产会计核算规范的研究[D]. 上海海事大学, 2004.</p>
+            <p>[2] 郭志明. 企业会计准则与会计信息质量的关系研究[D]. 重庆大学, 2004.</p>
+            <p>[3] 吴曰想. 审计、会计质量与公司治理研究[D]. 西南财经大学, 2005.</p>
+            <p>[4] 饶茜. 所得税会计方法选择的理论分析和实证研究[D]. 重庆大学, 2004.</p>
+            <p>[5] 刘秋红. 我国上市公司会计信息披露问题研究[D]. 山东科技大学, 2004.</p>
+            <p>[6] 孙丹. 论会计职业判断[D]. 中国海洋大学, 2004.</p>
+            <p>[7] 邱宁波. 司法会计鉴定制度研究[D]. 华东政法学院, 2004.</p>
+            <p style="margin-top: 15px;">[8] Watts R L, Zimmerman J L. Positive Accounting Theory[J]. 1986.</p>
+            <p>[9] 葛家澍. 会计理论与会计准则问题研究[M]. 中国财政经济出版社, 2000.</p>
+            <p>[10] 财政部. 企业会计准则[S]. 2001.</p>
+        </div>
+
+        <hr>
+
+        <!-- 返回链接 -->
+        <div style="text-align: center;">
+            <a href="/" class="back-link">← 返回个人主页</a>
+        </div>
+        
+        <div style="text-align: center; color: #94a3b8; font-size: 0.8em; margin-top: 30px;">
+            最后更新 / Last updated: 2026-04-27
+        </div>
     </div>
-    
-    <div class="paper">
-        <div class="title">（二）企业会计准则与会计信息质量的关系研究</div>
-        <div class="meta">郭志明 | 重庆大学 | 2004</div>
-        <p>会计信息具有"经济后果"，仅依靠会计准则无法保证高质量会计信息。实证发现新准则实施后净资产价值相关性提高，但盈余价值相关性下降。</p>
-    </div>
-    
-    <div class="paper">
-        <div class="title">（三）审计、会计质量与公司治理研究</div>
-        <div class="meta">吴曰想 | 西南财经大学 | 2005</div>
-        <p>提出三层次框架：内部治理监控会计质量→外部审计鉴证→外部治理直接监管审计。监管当局应强化外部治理、直接监管审计。</p>
-    </div>
-    
-    <div class="paper">
-        <div class="title">（四）所得税会计方法选择研究</div>
-        <div class="meta">饶茜 | 重庆大学 | 2004</div>
-        <p>企业会计政策选择受报酬契约、债务契约、政治成本三大因素影响。纳税影响会计法能起到收益平滑作用。</p>
-    </div>
-    
-    <div class="paper">
-        <div class="title">（五）上市公司会计信息披露问题研究</div>
-        <div class="meta">刘秋红 | 山东科技大学 | 2004</div>
-        <p>信息披露存在不真实、不恰当、不及时、不规范四大问题。深层成因包括利益驱动、违规成本低廉、法规政出多门等。</p>
-    </div>
-    
-    <div class="paper">
-        <div class="title">（六）论会计职业判断</div>
-        <div class="meta">孙丹 | 中国海洋大学 | 2004</div>
-        <p>会计职业判断经历了从自由放任→尽量遏制→正视并鼓励的过程。实证发现存在滥用职业判断进行盈余操纵的现象。</p>
-    </div>
-    
-    <div class="paper">
-        <div class="title">（七）司法会计鉴定制度研究</div>
-        <div class="meta">邱宁波 | 华东政法学院 | 2004</div>
-        <p>鉴定机构应独立于公检法，由司法行政机关统一管理；实行全国统一的司法会计鉴定人资格考试。</p>
-    </div>
-    
-    <h2>三、共识性发现</h2>
-    <ul>
-        <li>会计准则不是万能药：需要健全的法律环境和公司治理机制</li>
-        <li>公司治理是根源：会计信息质量问题的根源在公司治理结构</li>
-        <li>职业判断不可替代：会计职业判断是必不可少的</li>
-    </ul>
-    
-    <div class="ref">
-        <strong>参考文献</strong><br><br>
-        [1] 姜立坤. 对我国无形资产会计核算规范的研究[D]. 上海海事大学, 2004.<br>
-        [2] 郭志明. 企业会计准则与会计信息质量的关系研究[D]. 重庆大学, 2004.<br>
-        [3] 吴曰想. 审计、会计质量与公司治理研究[D]. 西南财经大学, 2005.<br>
-        [4] 饶茜. 所得税会计方法选择的理论分析和实证研究[D]. 重庆大学, 2004.<br>
-        [5] 刘秋红. 我国上市公司会计信息披露问题研究[D]. 山东科技大学, 2004.<br>
-        [6] 孙丹. 论会计职业判断[D]. 中国海洋大学, 2004.<br>
-        [7] 邱宁波. 司法会计鉴定制度研究[D]. 华东政法学院, 2004.
-    </div>
-    
-    <p style="margin-top: 30px;"><a href="/">← 返回个人主页</a></p>
-</div>
 </body>
 </html>
